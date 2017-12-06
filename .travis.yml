@@ -1,0 +1,33 @@
+# refer to 
+# https://github.com/felixduvallet/ros-travis-integration/blob/master/.travis.yml
+# and
+# https://github.com/erlerobot/ros2_travis/blob/master/.travis.yml
+#
+# ubuntu 14.04 trusty
+# ubuntu 16.04 xenial
+dist:
+    - trusty
+    - xenial
+
+sudo: required
+language:
+    - python
+    - generic
+python:
+    - 3.5
+    - 3.5-dev
+    - 3.6
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.9 # C++14 requires at least g++ 4.9
+    - gcc-4.9
+
+before_install:
+    - bash travis/kfj_ubuntu_ros2_build_from_source.sh
+
+script:
+    - bash travis/kfj_test_projects.sh

@@ -1,0 +1,18 @@
+# refer to 
+# https://github.com/felixduvallet/ros-travis-integration/blob/master/.travis.yml
+# and
+# https://github.com/erlerobot/ros2_travis/blob/master/.travis.yml
+#
+dist: trusty
+sudo: required
+language:
+    - generic
+cache:
+    - apt
+
+# refer to https://github.com/ros2/ros2/wiki/Linux-Install-Debians       
+before_install:
+    - sudo apt update && sudo apt install curl
+    - curl http://repo.ros2.org/repos.key | sudo apt-key add -
+    - sudo sh -c 'echo "deb http://repo.ros2.org/ubuntu/main xenial main" > /etc/apt/sources.list.d/ros2-latest.list'
+    - sudo apt update

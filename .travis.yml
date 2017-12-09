@@ -1,18 +1,39 @@
-# refer to 
-# https://github.com/felixduvallet/ros-travis-integration/blob/master/.travis.yml
-# and
-# https://github.com/erlerobot/ros2_travis/blob/master/.travis.yml
+# Travis CI for ROS2 on Mac OS X and Ubuntu
 #
-dist: trusty
-sudo: required
-language:
-    - generic
-cache:
-    - apt
+# Author: Fangjun Kuang, cuskuangfj <at> gmail <dot> com
+# Date: December 09, 2017
+#
+matrix:
+    include:
+        - os: osx
+          osx_image: xcode7.3 # OS X 10.11
+          language: c++
+        - os: linux
+          dist: trusty # Ubuntu 14.04
+          sudo: required
+          language: python
+          python: 3.5
 
-# refer to https://github.com/ros2/ros2/wiki/Linux-Install-Debians       
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.9
+      - gcc-4.9
+
+# install dependencies
 before_install:
-    - sudo apt update && sudo apt install curl
-    - curl http://repo.ros2.org/repos.key | sudo apt-key add -
-    - sudo sh -c 'echo "deb http://repo.ros2.org/ubuntu/main xenial main" > /etc/apt/sources.list.d/ros2-latest.list'
-    - sudo apt update
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash travis/osx/before_install.sh ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash travis/linux/before_install.sh ; fi 
+
+# install ROS2 binaries
+install:
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash travis/osx/install.sh ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash travis/linux/install.sh ; fi 
+
+# build the project
+script:
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash travis/osx/script.sh ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash travis/linux/script.sh ; fi 
+

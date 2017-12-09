@@ -9,18 +9,18 @@ matrix:
           osx_image: xcode7.3 # OS X 10.11
           language: c++
         - os: linux
-          dist: trusty # Ubuntu 14.04
+          addons:
+            apt:
+              sources:
+                - ubuntu-toolchain-r-test
+              packages:
+                - g++-4.9
+                - gcc-4.9
+          env:
+              - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
           sudo: required
           language: python
           python: 3.5
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.9
-      - gcc-4.9
 
 # install dependencies
 before_install:
@@ -34,9 +34,6 @@ install:
 
 # build the project
 script:
-    #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash travis/osx/script.sh ; fi
-    #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash travis/linux/script.sh ; fi 
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then source $HOME/ros2_install/ros2-osx/setup.bash ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then source $HOME/ros2_install/ros2-linux/setup.bash ; fi 
-    - bash travis/script.sh
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash travis/osx/script.sh ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash travis/linux/script.sh ; fi 
 

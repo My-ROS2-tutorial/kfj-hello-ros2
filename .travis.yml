@@ -1,13 +1,39 @@
-os: osx
-osx_image: xcode7.3  # OS X 10.11
+# Travis CI for ROS2 on Mac OS X and Ubuntu
+#
+# Author: Fangjun Kuang, cuskuangfj <at> gmail <dot> com
+# Date: December 09, 2017
+#
+matrix:
+    include:
+        - os: osx
+          osx_image: xcode7.3 # OS X 10.11
+          language: c++
+        - os: linux
+          dist: trusty # Ubuntu 14.04
+          sudo: required
+          language: python
+          python: 3.5
 
-language:
-    - C++
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.9
+      - gcc-4.9
 
-
+# install dependencies
 before_install:
-    #- bash travis/kfj_osx_ros2_build_from_source.sh # it exceeds the time limit (more than 1 hour)
-    - bash travis/kfj_osx_ros2_install_from_binary.sh
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash travis/osx/before_install.sh ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash travis/linux/before_install.sh ; fi 
 
+# install ROS2 binaries
+install:
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash travis/osx/install.sh ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash travis/linux/install.sh ; fi 
+
+# build the project
 script:
-    - bash travis/kfj_test_projects.sh
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash travis/osx/script.sh ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash travis/linux/script.sh ; fi 
+

@@ -34,6 +34,9 @@ install:
 
 # build the project
 script:
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash travis/osx/script.sh ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash travis/linux/script.sh ; fi 
+    #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash travis/osx/script.sh ; fi
+    #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash travis/linux/script.sh ; fi 
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then source $HOME/ros2_install/ros2-osx/setup.bash ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then source $HOME/ros2_install/ros2-linux/setup.bash ; fi 
+    - bash travis/script.sh
 

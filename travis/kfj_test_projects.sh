@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ~/ros2_ws/install/local_setup.bash
+. $HOME/ros2_ws/install/setup.bash
 
 which ament
 ament build

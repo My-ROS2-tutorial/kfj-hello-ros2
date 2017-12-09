@@ -2,15 +2,12 @@ os: osx
 osx_image: xcode7.3  # OS X 10.11
 
 language:
-    - c
+    - C++
 
 
 before_install:
-    - wget http://repo.continuum.io/miniconda/Miniconda-3.7.0-MacOSX-x86_64.sh -O miniconda.sh;
-    - bash miniconda.sh -b -p $HOME/miniconda
-    - export PATH="$HOME/miniconda/bin:$PATH"
-    - bash travis/kfj_osx_ros2_build_from_source.sh
+    #- bash travis/kfj_osx_ros2_build_from_source.sh # it exceeds the time limit (more than 1 hour)
+    - bash travis/kfj_osx_ros2_install_from_binary.sh
 
 script:
-    - export PATH="$HOME/miniconda/bin:$PATH"
     - bash travis/kfj_test_projects.sh

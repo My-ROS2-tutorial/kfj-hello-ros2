@@ -1,0 +1,6 @@
+[submodule "src/kfj_ros2_talker"]
+	path = src/kfj_ros2_talker
+	url = https://github.com/My-ROS2-tutorial/kfj_ros2_talker.git
+[submodule "src/kfj_ros2_listener"]
+	path = src/kfj_ros2_listener
+	url = https://github.com/My-ROS2-tutorial/kfj_ros2_listener.git

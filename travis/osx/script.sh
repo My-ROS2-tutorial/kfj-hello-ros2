@@ -16,8 +16,19 @@ build/kfj_hello_cmake/kfj_hello_cmake
 
 . install/local_setup.sh
 
+echo "start listener1"
 ./install/lib/kfj_ros2_listener/listener1 &
 
+echo "start listener2"
+./install/lib/kfj_ros2_listener/listener2 &
+
 #ros2 run kfj_ros2_talker talker1
+echo "start talker1"
 ./build/kfj_ros2_talker/talker1 &
+
+echo "start talker2"
+./build/kfj_ros2_talker/talker2 &
+
+# sleep 10 seconds to run the above background processes
+sleep 10
 

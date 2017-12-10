@@ -22,7 +22,7 @@ python3 --version
 which python
 which python3
 
-# OpenCV isn't a dependency of ROS 2, but it used by some demos.
+# OpenCV isn't a dependency of ROS 2, but it is used by some demos.
 brew install opencv
 
 # install OpenSSL for DDS-Security

@@ -29,6 +29,15 @@ echo "start talker1"
 echo "start talker2"
 ./build/kfj_ros2_talker/talker2 &
 
+echo "start server"
+./install/lib/kfj_ros2_demo_service_server/server  &
+
+sleep 1
+
+echo "start client"
+./install/lib/kfj_ros2_demo_service_client/client  &
+
+
 # sleep 10 seconds to run the above background processes
 sleep 10
 

@@ -4,3 +4,12 @@
 [submodule "src/kfj_ros2_listener"]
 	path = src/kfj_ros2_listener
 	url = https://github.com/My-ROS2-tutorial/kfj_ros2_listener.git
+[submodule "src/kfj_ros2_demo_service_server"]
+	path = src/kfj_ros2_demo_service_server
+	url = https://github.com/My-ROS2-tutorial/kfj_ros2_demo_service_server.git
+[submodule "src/kfj_ros2_demo_service_client"]
+	path = src/kfj_ros2_demo_service_client
+	url = https://github.com/My-ROS2-tutorial/kfj_ros2_demo_service_client.git
+[submodule "src/kfj_ros2_demo_service_interface"]
+	path = src/kfj_ros2_demo_service_interface
+	url = https://github.com/My-ROS2-tutorial/kfj_ros2_demo_service_interface.git

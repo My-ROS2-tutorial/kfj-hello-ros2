@@ -14,4 +14,7 @@ endif()
 add_executable(${PROJECT_NAME} main.cpp)
 
 install(TARGETS ${PROJECT_NAME}
-  DESTINATION lib/${PROJECT_NAME})
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+  )

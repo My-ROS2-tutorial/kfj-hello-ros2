@@ -4,7 +4,7 @@ pushd .
 
 # 1 ros2-beta3-package-osx-fastrtps-x86_64.tar.bz2
 # 2 ros2-ardent-package-osx-fastrtps-x86_64.tar.bz2
-my_version=2
+my_version=1
 
 mkdir -p $HOME/ros2_install
 cd $HOME/ros2_install

@@ -15,6 +15,9 @@ build/kfj_hello_ament_cmake/kfj_hello_ament_cmake
 build/kfj_hello_cmake/kfj_hello_cmake 
 
 . install/local_setup.sh
+
+./install/lib/kfj_ros2_listener/listener1 &
+
 #ros2 run kfj_ros2_talker talker1
-./build/kfj_ros2_talker/talker1
+./build/kfj_ros2_talker/talker1 &
 
